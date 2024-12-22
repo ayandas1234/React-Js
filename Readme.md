@@ -109,6 +109,6 @@ useEffect(() => {
   ```
   conditional rerendering
 
-  #### NOTE:- Whenwver state is changing then Re-reder is triggered
+  #### NOTE:- Whenever state is changing then Re-reder is triggered
 
   #### [More About UseRef](https://react.dev/reference/react/useRef)
