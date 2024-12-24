@@ -90,14 +90,41 @@ useEffect(() => {
 - **Avoid Unnecessary Re-Runs:** Use a dependency array to optimize performance by controlling when the effect runs.
 - **Sync with the Lifecycle:** `useEffect` combines `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` from class components.
 
-#### 🖌 All The below code are same if we write anything inside curley braces `<Navbar color={cyan}/>` or inside the invited comma `<Navbar color="cyan"/>` or using both `<Navbar color={"cyan"}/>` all are treated as `javascript code`
+### __❇️ Example: Data Fetching:-__
+```
+import React, { useState, useEffect } from 'react';
+
+function Example() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('https://api.example.com/data');
+      const result = await response.json();
+      setData(result);
+    };
+
+    fetchData();
+  }, []); // Empty array ensures this runs only once
+
+  return (
+    <div>
+      {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : 'Loading...'}
+    </div>
+  );
+}
+
+export default Example;
+```
+
+### 🖌 All The below code are same if we write anything inside curley braces `<Navbar color={cyan}/>` or inside the invited comma `<Navbar color="cyan"/>` or using both `<Navbar color={"cyan"}/>` all are treated as `javascript code`
 ```
 <Navbar color={cyan}/>
 <Navbar color="cyan"/>
 <Navbar color={"cyan" + "blue"}/>
 ```
 
-unmounted
+### Unmounted:-
 ```
 useEffect(() => {
     alert("Hey welcome to my page. This is the first render of app.jsx")
@@ -107,7 +134,6 @@ useEffect(() => {
     } -->> whenever we want to delete any coponent from rendering then we write this return statement using this statement we can unmounted any component
   }, [])
   ```
-  conditional rerendering
 
   #### NOTE:- Whenever state is changing then Re-reder is triggered
 
